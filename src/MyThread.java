@@ -1,19 +1,17 @@
 public class MyThread extends Thread{
-    public MyThread(String name){
-        super(name);
+
+    private Counter counter;
+
+    public MyThread(Counter counter){
+        this.counter = counter;
     }
+
     @Override
     public void run() {
-        while(true){
-            System.out.println("Hello!!");
-        }
+       for (int i = 0; i < 1000; i++){
+           counter.increment();
+       }
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        MyThread t1 = new MyThread("Harsh");
-        t1.setDaemon(true);
-        t1.start();
-        System.out.println("Main Done");
 
-    }
 }
