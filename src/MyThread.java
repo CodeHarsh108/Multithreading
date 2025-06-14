@@ -4,17 +4,16 @@ public class MyThread extends Thread{
     }
     @Override
     public void run() {
-        try {
-            Thread.sleep(1000);
-            System.out.println("Thread is running");
-        } catch (InterruptedException e) {
-            System.out.println("Thread Interrupted " + e);
+        for (int i =0; i < 5; i++){
+            System.out.println(Thread.currentThread().getName() + " is running");
+            Thread.yield();
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
-        MyThread t1 = new MyThread("H");
+        MyThread t1 = new MyThread("Harsh");
+        MyThread t2 = new MyThread("Patil");
         t1.start();
-        t1.interrupt();
+        t2.start();
     }
 }
