@@ -14,7 +14,7 @@ public class BankAccount {
                 Thread.sleep(3000);
                 balance -= amount;
                 System.out.println(Thread.currentThread().getName() + " completed");} catch (Exception e) {
-                    throw new RuntimeException(e);
+                    Thread.currentThread().interrupt();
                 }finally {
                     lock.unlock();
                 }
