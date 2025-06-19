@@ -8,8 +8,9 @@ public class Main {
         }
         return result;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         for (long i = 1; i < 10; i++) {
+            Thread.sleep(1000);
             System.out.println(factorial(i));
         }
     }
