@@ -1,5 +1,9 @@
 package executorframework;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 public class Main {
     public static long factorial(long n){
         try {
@@ -15,24 +19,20 @@ public class Main {
     }
     public static void main(String[] args)  {
         long start = System.currentTimeMillis();
-        Thread[] threads = new Thread[9];
+        ExecutorService executorService = Executors.newFixedThreadPool(9);
         for (long i = 1; i < 10; i++) {
             long finalI = i;
-            threads[(int) (i-1)] = new Thread(
-                    () -> {
-                        long result = factorial(finalI);
-                        System.out.println(result);
-                    }
-            );
-            threads[(int) (i-1)].start();
+            executorService.submit(() -> {
+                long result = factorial(finalI);
+                System.out.println(result);
+            });
 
         }
-        for(Thread thread : threads){
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(100, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         System.out.println("Total time : " + (System.currentTimeMillis() - start));
     }
