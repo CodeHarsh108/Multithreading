@@ -28,7 +28,7 @@ public class Main {
             });
 
         }
-        executorService.shutdown();
+        executorService.shutdownNow();
         try {
             executorService.awaitTermination(100, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
