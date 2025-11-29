@@ -1,3 +1,5 @@
+package Others;
+
 public class MyThread extends Thread{
 
     private Counter counter;

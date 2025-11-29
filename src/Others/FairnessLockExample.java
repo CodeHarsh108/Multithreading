@@ -1,7 +1,7 @@
+package Others;
+
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class FairnessLockExample {
     private final Lock lock = new ReentrantLock(true);
