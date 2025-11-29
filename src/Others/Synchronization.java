@@ -2,9 +2,8 @@ package Others;
 
 class Counters{
     int count = 0;
-     void increment(){
-         synchronized (this){
-        count++;}
+     synchronized  void increment(){
+        count++;
     }
 }
 
