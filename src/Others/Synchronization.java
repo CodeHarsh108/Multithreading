@@ -2,8 +2,9 @@ package Others;
 
 class Counters{
     int count = 0;
-    void increment(){
-        count++;
+     void increment(){
+         synchronized (this){
+        count++;}
     }
 }
 
@@ -11,10 +12,10 @@ public class Synchronization {
     public static void main(String[] args) throws InterruptedException {
         Counters c = new Counters();
         Thread t1 = new Thread(() -> {
-            for(int i = 0; i <= 1000; i++) c.increment();
+            for(int i = 0; i < 1000; i++) c.increment();
         });
         Thread t2 = new Thread(() -> {
-            for(int i = 0; i <= 1000; i++) c.increment();
+            for(int i = 0; i < 1000; i++) c.increment();
         });
 
         t1.start();
