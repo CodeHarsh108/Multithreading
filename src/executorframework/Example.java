@@ -9,5 +9,6 @@ public class Example {
     public static void main(String[] args) {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(() -> System.out.println("Hii"), 5, 5, TimeUnit.SECONDS);
+
     }
 }
