@@ -11,10 +11,12 @@ public class InvokeAll {
         Callable<String> t2 = () -> "Task 2 done";
         Callable<String> t3 = () -> "Task 3 done";
         List<Callable<String>> tasks = Arrays.asList(t1, t2, t3);
-        List<Future<String>> results = service.invokeAll(tasks);
-        for(Future<String> f : results){
-            System.out.println(f.get());
-        }
+//        List<Future<String>> results = service.invokeAll(tasks);
+//        for(Future<String> f : results){
+//            System.out.println(f.get());
+//        }
+        String result = service.invokeAny(tasks);
+        System.out.println(result);
         service.shutdown();
 
 
