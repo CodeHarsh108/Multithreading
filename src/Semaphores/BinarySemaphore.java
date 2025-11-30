@@ -4,7 +4,7 @@ import java.util.concurrent.Semaphore;
 
 public class BinarySemaphore {
     public static void main(String[] args) {
-        Semaphore semaphore = new Semaphore(1);
+        Semaphore semaphore = new Semaphore(2);
         Runnable task = () -> {
             try{
                 semaphore.acquire();
